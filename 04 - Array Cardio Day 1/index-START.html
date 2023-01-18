@@ -38,14 +38,50 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
 
+    
+    function filterToDOBIn1500s(inventors){
+      if (inventors.year > 1499 && inventors.year < 1600){   
+        return true;    
+    }    
+  }  
+  const filtered = inventors.filter(filterToDOBIn1500s);
+  console.table(filtered);   
+
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+  const inventorsMap = inventors.map(inventorsMapFunction);
+
+  function inventorsMapFunction(inventor){
+    return[inventor.first, inventor.last].join(' ');
+  }
+  console.table(inventorsMap);
+
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const inventorsSorted = inventors.sort(inventorsSorter);
+
+    function inventorsSorter(a, b){
+      return a.year - b.year;   
+    }
+
+    console.table(inventorsSorted);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    const inventorsReduced = inventors.reduce(inventorsReduceFunction, 0);
+    
+    function inventorsReduceFunction(accumulator, currentInventor){ 
+      let ageAtDeath = (currentInventor.passed - currentInventor.year);
+      console.log(accumulator);
+      console.log(currentInventor.first , currentInventor.last + ' lived to ' , ageAtDeath);
+      console.log('Type of ageOfDeath: ' , typeof(ageAtDeath));
+      console.log('Type of accumulator: ' , typeof(accumulator));
+      console.log('Accumulator: ' + accumulator);
+      return accumulator + ageAtDeath;
+    }
+
+    console.log('All together these inventors were around for ' + inventorsReduced + ' years');
 
     // 5. Sort the inventors by years lived
 
