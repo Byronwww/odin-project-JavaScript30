@@ -28,11 +28,11 @@
     ];
 
     const people = [
-      'Bernhard, Sandra', 'Bethea, Erin', 'Becker, Carl', 'Bentsen, Lloyd', 'Beckett, Samuel', 'Blake, William', 'Berger, Ric', 'Beddoes, Mick', 'Beethoven, Ludwig',
+      'Zernhard, Sandra', 'Yethea, Erin', 'Xecker, Carl', 'Bentsen, Lloyd', 'Beckett, Samuel', 'Blake, William', 'Berger, Ric', 'Beddoes, Mick', 'Beethoven, Ludwig',
       'Belloc, Hilaire', 'Begin, Menachem', 'Bellow, Saul', 'Benchley, Robert', 'Blair, Robert', 'Benenson, Peter', 'Benjamin, Walter', 'Berlin, Irving',
       'Benn, Tony', 'Benson, Leana', 'Bent, Silas', 'Berle, Milton', 'Berry, Halle', 'Biko, Steve', 'Beck, Glenn', 'Bergman, Ingmar', 'Black, Elk', 'Berio, Luciano',
       'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
-      'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
+      'Billings, Josh', 'Birrell, Augustine', 'Clair, Tony', 'Beecher, Henry', 'Aiondo, Frank'
     ];
     
     // Array.prototype.filter()
@@ -85,12 +85,32 @@
 
     // 5. Sort the inventors by years lived
 
+    const inventorsWithAgeAdded = inventors.sort(inventorsAlphaSorter);
+
+    function inventorsAlphaSorter(a, b){
+      return (a.passed - a.year) - (b.passed - b.year);
+    }
+
+    console.table(inventorsWithAgeAdded);
+ 
+
+
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const namesSorted = people.sort(peopleSorter);
+
+    function peopleSorter(a, b){
+      const [aFirst, aLast] = a.split(', ');
+      const [bFirst, bLast] = b.split(', ');
+      return aFirst < bFirst;
+    }
+
+    console.table(namesSorted);
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
